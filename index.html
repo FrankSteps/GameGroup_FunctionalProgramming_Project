@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- Define que o documento é HTML5 e que o idioma principal é português do Brasil -->
+<head>
+
+    <meta charset="UTF-8" /> <!-- Define que os caracteres usados são UTF-8 (permite acentos e emojis) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ajusta o layout para dispositivos móveis -->
+    <title>Playground</title> <!-- Título que aparece na aba do navegador -->
+    
+    <style>
+        /* Estilo básico da página */
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        button { margin: 5px; padding: 8px 12px; } /* Espaçamento e tamanho dos botões */
+        #output { 
+        margin-top: 20px; 
+        white-space: pre; /* Mantém quebras de linha no texto mostrado */
+        background: #f5f5f5; 
+        padding: 10px; 
+        border: 1px solid #ddd; 
+        }
+        form { margin-top: 15px; }
+        input { margin: 5px; padding: 5px; } /* Campos de texto mais organizados */
+    </style>
+</head>
+<body>
+    <h1>Sistema de Jogos 🎮</h1> <!-- Corrigido: tag de abertura <h1> -->
+    <!-- Área de botões para o menu principal -->
+    <div id="buttons">
+        <!-- Cada botão tem um atributo "data-action" para indicar a ação que será executada -->
+        <button data-action="init">0 - Iniciar Jogos</button> <!-- NOVO -->
+        <button data-action="list">1 - Listar jogos</button>
+        <button data-action="filterByDev">2 - Filtrar por desenvolvedora</button>
+        <button data-action="filterByPeriod">3 - Filtrar por período de lançamento</button>
+        <button data-action="filterByPrice">4 - Filtrar por faixa de preço</button>
+        <button data-action="filterByTag">5 - Filtrar por tag</button>
+        <button data-action="exit">6 - Sair</button>
+    </div>
+    <!-- Aqui será exibido dinamicamente o formulário de cada ação (por exemplo, adicionar jogo) -->
+    <div id="forms"></div>
+    <!-- Área para mostrar resultados (exemplo: lista de jogos cadastrados) -->
+    <div id="output"></div>
+    <!-- Biblioteca externa Chart.js (para gráficos, se forem usados) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Arquivo JavaScript separado (módulo) que controla a interface -->
+    <script type="module" src="ui.js"></script>
+</body>
+</html>
