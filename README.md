@@ -1,5 +1,5 @@
 Por enquanto, em testes...
 Obrigado pela visita
 
-in testing for now
+Currently in testing...
 Thanks for visiting us
