@@ -209,7 +209,7 @@ const actions = {
     forms.innerHTML = ''; // Limpa o formulário
   },
   list : () => showListAllForm(),
-  add : () => showAddForm,
+  add : () => showAddForm(),
   update : () => showUpdateForm(),
   delete : () => showDeleteForm(),
   listByDeveloper : () => showListByDeveloperForm(),
