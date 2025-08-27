@@ -1,21 +1,26 @@
+// Chave usada para armazenar os jogos no localStorage
 const STORAGE_KEY = "playground::games"
 
-
+// Carrega os jogos do localStorage
 const loadGames = () => {
   const data = localStorage.getItem(STORAGE_KEY)
   return data ? JSON.parse(data) : []
 }
 
+// Salva os jogos no localStorage
 const saveGames = (games) =>
   localStorage.setItem(STORAGE_KEY, JSON.stringify(games))
 
+// Remove os jogos do localStorage
 const clearGames = () => {
   localStorage.removeItem(STORAGE_KEY)
   console.log("crud limpo.")
 }
 
+// Restaura a lista de jogos inicial e salva no localStorage
 const resetGames = () => {
 const games = [
+    // Lista de jogos pré-definidos
     {id: 0, nome: 'Elden Ring', preco: 'R$ 249,90', desenvolvedora: 'FromSoftware', anoDeLancamento: 2022, tags: ['RPG', 'Ação', 'Mundo Aberto']},
     {id: 1, nome: 'The Witcher 3: Wild Hunt', preco: 'R$ 99,90', desenvolvedora: 'CD Projekt Red', anoDeLancamento: 2015, tags: ['RPG', 'Fantasia', 'História']},
     {id: 2, nome: 'God of War', preco: 'R$ 199,90', desenvolvedora: 'Santa Monica Studio', anoDeLancamento: 2018, tags: ['Ação', 'Aventura', 'Mitologia']},
@@ -66,7 +71,6 @@ const games = [
     {id: 47, nome: 'RimWorld', preco: 'R$ 93,99', desenvolvedora: 'Ludeon Studios', anoDeLancamento: 2018, tags: ['Simulação', 'Estratégia', 'Colônia']},
     {id: 48, nome: 'Factorio', preco: 'R$ 90,00', desenvolvedora: 'Wube Software', anoDeLancamento: 2020, tags: ['Automação', 'Estratégia', 'Construção']},
     {id: 49, nome: 'Phasmophobia', preco: 'R$ 27,99', desenvolvedora: 'Kinetic Games', anoDeLancamento: 2020, tags: ['Terror', 'Cooperativo', 'Fantasma']}
-
 ]
 
   saveGames(games)
@@ -74,99 +78,81 @@ const games = [
   return games
 }
 
+// Formata a lista de jogos para exibição básica
 const basicFormat = (games) => {
-
     return games.map((x)=> `${x.id}# ${x.nome} (${x.desenvolvedora}, ${x.anoDeLancamento}) - ${x.preco} | [${x.tags[0]}][${x.tags[1]}][${x.tags[2]}]`)
-
 }
 
+// Converte o preço do jogo para número (float), retorna 0 se for gratuito
 const convertPriceToNum = (price) => {
-
     if (price === 'Gratuito') return 0
     else return parseFloat(price.slice(3).replace(',','.'))
-
 }
 
+// Lista jogos que possuem pelo menos 'proximity' tags iguais ao jogo informado
 const listTagParriedGames = (proximity=1,game,games) => {
-
+    // Função auxiliar para buscar tag
     const search = (x,lista) => {
-
         const [y,...ys] = lista
-
         if (y === undefined) return 0
         else if (x === y) return 1
         else return search(x,ys)
-
     }
 
     const [x,...xs] = games
 
     if (x === undefined) return []
     else if (game != x) {
-
         const tagGame = game.tags
         const tagMatch = x.tags
-
+        // Conta quantas tags coincidem
         const parrity = tagGame.reduce((acc,x)=> acc+search(x,tagMatch),0)
-
         if (parrity >= proximity) return [x,...listTagParriedGames(proximity,game,xs)]
         else return listTagParriedGames(proximity,game,xs)
-
     }
     else return listTagParriedGames(proximity,game,xs)
-
 }
 
+// Lista jogos por desenvolvedora
 const listByDev = (desenvolvedora,games) => {
-
     const gamesByDev = games.filter((x)=> x.desenvolvedora === desenvolvedora)
-
     return gamesByDev
-
 }
 
+// Lista jogos por período de lançamento
 const listByPeriod = (firstyear,lastyear=9999,games) => {
-
     const gamesByPeriod = games.filter((x)=>firstyear <= x.anoDeLancamento && x.anoDeLancamento <= lastyear)
-
     return gamesByPeriod
-
 }
 
+// Lista jogos por faixa de preço
 const listByPrice = (firstprice=0,lastprice,games) => {
-
     const gamesByPrice = games.filter((x)=>firstprice <= convertPriceToNum(x.preco) && convertPriceToNum(x.preco) <= lastprice)
-
     return gamesByPrice
-
 }
 
+// Remove um jogo pelo id
 const deleteGame = (id,games) => {
-
     return games.filter((x)=> x.id != id)
-
 }
 
+// Adiciona um novo jogo à lista
 const addGame = (id,nome,desenvolvedora,anoDeLancamento,preco,tags,games) => {
-
     return [...games, {id:id, nome:nome, preco:preco, desenvolvedora:desenvolvedora, anoDeLancamento:anoDeLancamento, tags:tags}]
-
 }
 
+// Atualiza um jogo existente pelo id
 const updateGame = (id,nome,desenvolvedora,anoDeLancamento,preco,tags,games) => {
-
     const [x,...xs] = games
-
     if (x === undefined) return []
     else if (x.id === id) return [{id:id, nome:nome, preco:preco, desenvolvedora:desenvolvedora, anoDeLancamento:anoDeLancamento, tags:tags},...updateGame(id,nome,desenvolvedora,anoDeLancamento,preco,tags,xs)]
     else return [x,...updateGame(id,nome,desenvolvedora,anoDeLancamento,preco,tags,xs)]
-
 }
 
+// Formata a lista de jogos usando uma função de formatação
 const listGames = (formatFunc,games) => {return formatFunc(games).join('\n')}
 
-
-//add
+// Retorna lista de jogos com preço convertido para número
 const priceMod = (games) => games.map(x => ({           
     id: x.id,
     nome: x.nome,
@@ -176,6 +162,7 @@ const priceMod = (games) => games.map(x => ({
     tags: x.tags,
 }))
 
+// Exporta todas as funções como playground
 export const playground = {
     loadGames,
     saveGames,
