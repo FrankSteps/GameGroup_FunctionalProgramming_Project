@@ -1,4 +1,4 @@
-import { playground } from "./lib";
+import { playground } from "./lib.js";
 
 //========dados e elementos==========
 
@@ -21,13 +21,14 @@ function showAddForm() {
     <h3>Adicionar jogo</h3>
     <form id="addForm">
       <input type="number" id="addId" placeholder="ID" required />
-      <input type="text" id="addTitle" placeholder="Título" required />
-      <imput tipe="text" id="addPrice" placeholder="Preço" required />
-      <input type="text" id="addDeveloper" placeholder="Desenvolvedor" required />
-      <input type="number" id="addYear" placeholder="Ano" required />
+      <input type="text" id="addNome" placeholder="Nome" required />
+      <input type="text" id="addPreco" placeholder="Preço" required />
+      <input type="text" id="addDesenvolvedora" placeholder="Desenvolvedora" required />
+      <input type="number" id="addAnoDeLancamento" placeholder="Ano" required />
       <input type="text" id="addTag1" placeholder="Tag 1" required />
       <input type="text" id="addTag2" placeholder="Tag 2" required />
       <input type="text" id="addTag3" placeholder="Tag 3" required />
+      <button type="submit">Adicionar</button>
     </form>
   `;
   // Quando o formulário é enviado
@@ -35,20 +36,28 @@ function showAddForm() {
     e.preventDefault(); // Evita recarregar a página
     const newGame = {
       id: Number(document.getElementById('addId').value),
-      title: document.getElementById('addTitle').value,
-      price: document.getElementById('addPrice').value,
-      developer: document.getElementById('addDeveloper').value,
-      year: Number(document.getElementById('addYear').value),
+      nome: document.getElementById('addNome').value,
+      preco: document.getElementById('addPreco').value,
+      desenvolvedora: document.getElementById('addDesenvolvedora').value,
+      anoDeLancamento: Number(document.getElementById('addAnoDeLancamento').value),
       tags: [
         document.getElementById('addTag1').value,
         document.getElementById('addTag2').value,
         document.getElementById('addTag3').value
       ]
     };
-    games = playground.addGame(newGame.id, newGame.title, newGame.price, newGame.developer, newGame.year, newGame.tags, games); // Chama a função da lib
+    games = playground.addGame(
+      newGame.id,
+      newGame.nome,
+      newGame.desenvolvedora,
+      newGame.anoDeLancamento,
+      newGame.preco,
+      newGame.tags,
+      games
+    ); // Chama a função da lib
     playground.saveGames(games); // Salva no localStorage
     forms.innerHTML = ''; // Limpa o formulário
-    output.textContent = 'jogo adicionado!';
+    output.textContent = 'Jogo adicionado!';
   });
 }
 
@@ -58,13 +67,14 @@ function showUpdateForm() {
     <h3>Atualizar jogo</h3>
     <form id="updateForm">
       <input type="number" id="updateId" placeholder="ID do jogo a ser atualizado" required />
-      <input type="text" id="updateTitle" placeholder="Novo Título" required />
-      <imput tipe="text" id="updatePrice" placeholder="Novo Preço" required />
-      <input type="text" id="updateDeveloper" placeholder="Novo Desenvolvedor" required />
-      <input type="number" id="updateYear" placeholder="Novo Ano" required />
+      <input type="text" id="updateNome" placeholder="Novo Nome" required />
+      <input type="text" id="updatePreco" placeholder="Novo Preço" required />
+      <input type="text" id="updateDesenvolvedora" placeholder="Nova Desenvolvedora" required />
+      <input type="number" id="updateAnoDeLancamento" placeholder="Novo Ano" required />
       <input type="text" id="updateTag1" placeholder="Nova Tag 1" required />
       <input type="text" id="updateTag2" placeholder="Nova Tag 2" required />
       <input type="text" id="updateTag3" placeholder="Nova Tag 3" required />
+      <button type="submit">Atualizar</button>
     </form>
   `;
   // Quando o formulário é enviado
@@ -72,20 +82,28 @@ function showUpdateForm() {
     e.preventDefault(); // Evita recarregar a página
     const updatedGame = {
       id: Number(document.getElementById('updateId').value),
-      title: document.getElementById('updateTitle').value,
-      price: document.getElementById('updatePrice').value,
-      developer: document.getElementById('updateDeveloper').value,
-      year: Number(document.getElementById('updateYear').value),
+      nome: document.getElementById('updateNome').value,
+      preco: document.getElementById('updatePreco').value,
+      desenvolvedora: document.getElementById('updateDesenvolvedora').value,
+      anoDeLancamento: Number(document.getElementById('updateAnoDeLancamento').value),
       tags: [
         document.getElementById('updateTag1').value,
         document.getElementById('updateTag2').value,
         document.getElementById('updateTag3').value
       ]
     };
-    games = playground.updateGame(updatedGame.id, updatedGame.title, updatedGame.price, updatedGame.developer, updatedGame.year, updatedGame.tags, games); // Chama a função da lib
+    games = playground.updateGame(
+      updatedGame.id,
+      updatedGame.nome,
+      updatedGame.desenvolvedora,
+      updatedGame.anoDeLancamento,
+      updatedGame.preco,
+      updatedGame.tags,
+      games
+    ); // Chama a função da lib
     playground.saveGames(games); // Salva no localStorage
     forms.innerHTML = ''; // Limpa o formulário
-    output.textContent = 'jogo atualizado!';
+    output.textContent = 'Jogo atualizado!';
   });
 }
 
@@ -95,6 +113,7 @@ function showDeleteForm() {
     <h3>Deletar jogo</h3>
     <form id="deleteForm">
       <input type="number" id="deleteId" placeholder="ID do jogo a ser deletado" required />
+      <button type="submit">Deletar</button>
     </form>
   `;
   // Quando o formulário é enviado
@@ -104,25 +123,26 @@ function showDeleteForm() {
     games = playground.deleteGame(idToDelete, games); // Chama a função da lib
     playground.saveGames(games); // Salva no localStorage
     forms.innerHTML = ''; // Limpa o formulário
-    output.textContent = 'jogo deletado!';
+    output.textContent = 'Jogo deletado!';
   });
 }
 
-//---------formulario de listar jogo por desenvoldedor----------
+//---------formulario de listar jogo por desenvolvedora----------
 function showListByDeveloperForm() {
   forms.innerHTML = `
-    <h3>Listar jogos por desenvolvedor</h3>
+    <h3>Listar jogos por desenvolvedora</h3>
     <form id="listByDevForm">
-      <input type="text" id="listDev" placeholder="Nome do desenvolvedor" required />
+      <input type="text" id="listDev" placeholder="Nome da desenvolvedora" required />
+      <button type="submit">Listar</button>
     </form>
   `;
   // Quando o formulário é enviado
   document.getElementById('listByDevForm').addEventListener('submit', e => {
     e.preventDefault(); // Evita recarregar a página
-    const developer = document.getElementById('listDev').value;
-    const results = playground.listGamesByDeveloper(developer, games); // Chama a função da lib
+    const desenvolvedora = document.getElementById('listDev').value;
+    const results = playground.listByDev(desenvolvedora, games); // Chama a função da lib
     forms.innerHTML = ''; // Limpa o formulário
-    output.textContent = results.length ? JSON.stringify(results, null, 2) : 'Nenhum jogo encontrado para este desenvolvedor.';
+    output.textContent = results.length ? JSON.stringify(results, null, 2) : 'Nenhum jogo encontrado para esta desenvolvedora.';
   });
 }
 
@@ -133,6 +153,7 @@ function showListByYearForm() {
     <form id="listByYearForm">
       <input type="number" id="startYear" placeholder="Ano inicial" required />
       <input type="number" id="endYear" placeholder="Ano final" required />
+      <button type="submit">Listar</button>
     </form>
   `;
   // Quando o formulário é enviado
@@ -140,7 +161,7 @@ function showListByYearForm() {
     e.preventDefault(); // Evita recarregar a página
     const startYear = Number(document.getElementById('startYear').value);
     const endYear = Number(document.getElementById('endYear').value);
-    const results = playground.listGamesByReleasePeriod(startYear, endYear, games); // Chama a função da lib
+    const results = playground.listByPeriod(startYear, endYear, games); // Chama a função da lib
     forms.innerHTML = ''; // Limpa o formulário
     output.textContent = results.length ? JSON.stringify(results, null, 2) : 'Nenhum jogo encontrado neste período.';
   });
@@ -153,6 +174,7 @@ function showListByPriceForm() {
     <form id="listByPriceForm">
       <input type="number" step="0.01" id="minPrice" placeholder="Preço mínimo" required />
       <input type="number" step="0.01" id="maxPrice" placeholder="Preço máximo" required />
+      <button type="submit">Listar</button>
     </form>
   `;
   // Quando o formulário é enviado
@@ -160,7 +182,7 @@ function showListByPriceForm() {
     e.preventDefault(); // Evita recarregar a página
     const minPrice = parseFloat(document.getElementById('minPrice').value);
     const maxPrice = parseFloat(document.getElementById('maxPrice').value);
-    const results = playground.listGamesByPriceRange(minPrice, maxPrice, games); // Chama a função da lib
+    const results = playground.listByPrice(minPrice, maxPrice, games); // Chama a função da lib
     forms.innerHTML = ''; // Limpa o formulário
     output.textContent = results.length ? JSON.stringify(results, null, 2) : 'Nenhum jogo encontrado nesta faixa de preço.';
   });
@@ -172,15 +194,25 @@ function showListByTagForm() {
     <h3>Listar jogos por paridade de tag</h3>
     <form id="listByTagForm">
       <input type="text" id="tag" placeholder="Tag" required />
+      <input type="number" id="proximity" placeholder="Proximidade (mínimo de tags iguais)" value="1" min="1" max="3" required />
+      <input type="number" id="gameId" placeholder="ID do jogo base" required />
+      <button type="submit">Listar</button>
     </form>
   `;
   // Quando o formulário é enviado
   document.getElementById('listByTagForm').addEventListener('submit', e => {
     e.preventDefault(); // Evita recarregar a página
-    const tag = document.getElementById('tag').value;
-    const results = playground.listGamesByTagMatch(tag, games); // Chama a função da lib
+    const proximity = Number(document.getElementById('proximity').value);
+    const gameId = Number(document.getElementById('gameId').value);
+    const game = games.find(g => g.id === gameId);
+    if (!game) {
+      output.textContent = 'Jogo base não encontrado.';
+      forms.innerHTML = '';
+      return;
+    }
+    const results = playground.listTagParriedGames(proximity, game, games); // Chama a função da lib
     forms.innerHTML = ''; // Limpa o formulário
-    output.textContent = results.length ? JSON.stringify(results, null, 2) : 'Nenhum jogo encontrado com esta tag.';
+    output.textContent = results.length ? JSON.stringify(results, null, 2) : 'Nenhum jogo encontrado com esta paridade de tag.';
   });
 }
 
@@ -188,20 +220,22 @@ function showListByTagForm() {
 function showListAllForm() {
   forms.innerHTML = `
     <h3>Listar todos os jogos</h3>
-    <form id="listAllForm"></form>
+    <form id="listAllForm">
+      <button type="submit">Listar</button>
+    </form>
   `;
   // Quando o formulário é enviado
   document.getElementById('listAllForm').addEventListener('submit', e => {
     e.preventDefault(); // Evita recarregar a página
-    const results = playground.listGames(games); // Chama a função da lib
+    const results = playground.basicFormat(games); // Chama a função de formatação básica
     forms.innerHTML = ''; // Limpa o formulário
-    output.textContent = results.length ? JSON.stringify(results, null, 2) : 'Nenhum jogo cadastrado.';
+    output.textContent = results.length ? results.join('\n') : 'Nenhum jogo cadastrado.';
   });
 }
 
 //========actions==========
 // Dicionário que associa cada ação a uma função
-const actions = {
+const action = {
   init : () => {
     games = playground.resetGames();
     playground.saveGames(games);
@@ -215,5 +249,21 @@ const actions = {
   listByDeveloper : () => showListByDeveloperForm(),
   listByYear : () => showListByYearForm(),
   listByPrice : () => showListByPriceForm(),
-  listByTag : () => showListByTagForm()
+  listByTag : () => showListByTagForm(),
+  exit : () => {
+    output.textContent = 'Sessão encerrada. Atualize a página para reiniciar.';
+    forms.innerHTML = ''; // Limpa o formulário
+    buttons.innerHTML = ''; // Remove os botões
+  }
 }
+
+//========event listeners==========
+// Adiciona um listener para cada botão que chama a função correspondente
+buttons.querySelectorAll('button').forEach(button => {
+  button.addEventListener('click', () => {
+    const actionName = button.getAttribute('data-action');
+    if (action[actionName]) {
+      action[actionName]();
+    }
+  });
+});
