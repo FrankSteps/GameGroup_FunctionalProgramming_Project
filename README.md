@@ -1,5 +1,5 @@
 Por enquanto, em testes...
-Obrigado pela visita
+Obrigado pela visita!
 
 Currently in testing...
-Thanks for visiting us
+Thanks for visiting us!
