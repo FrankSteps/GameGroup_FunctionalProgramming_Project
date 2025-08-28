@@ -1,0 +1,68 @@
+/* Estilo básico da página */
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 20px; 
+    background: linear-gradient(135deg, #ece9e6, #ffffff);
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+/* Área dos botões principais */
+#buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button { 
+    margin: 5px; 
+    padding: 12px 16px; 
+    background-color: #19adb3; 
+    color: white; 
+    border: none; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #2fc4c9;
+}
+
+/* Área de formulários dinâmicos */
+form { 
+    margin-top: 15px; 
+}
+
+input { 
+    margin: 5px; 
+    padding: 8px; 
+    border-radius: 4px; 
+    border: 1px solid #ccc; 
+}
+
+/* Área de saída (resultados do sistema) */
+#output { 
+    margin-top: 20px; 
+    white-space: pre; /* Mantém quebras de linha no texto mostrado */
+    background: #f9f9f9; 
+    padding: 15px; 
+    border-radius: 8px; 
+    border: 1px solid #ddd; 
+    font-family: monospace;
+}
+
+/* Responsividade: melhora visual em telas pequenas */
+@media (max-width: 600px) {
+    button {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
