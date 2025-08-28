@@ -142,7 +142,7 @@ function showListByDeveloperForm() {
     const desenvolvedora = document.getElementById('listDev').value;
     const results = playground.listByDev(desenvolvedora, games); // Chama a função da lib
     forms.innerHTML = ''; // Limpa o formulário
-    output.textContent = results.length ? JSON.stringify(results, null, 2) : 'Nenhum jogo encontrado para esta desenvolvedora.';
+    output.textContent = results.length ? playground.basicFormat(results).join('\n') : 'Nenhum jogo encontrado para esta desenvolvedora.';
   });
 }
 
@@ -163,7 +163,7 @@ function showListByYearForm() {
     const endYear = Number(document.getElementById('endYear').value);
     const results = playground.listByPeriod(startYear, endYear, games); // Chama a função da lib
     forms.innerHTML = ''; // Limpa o formulário
-    output.textContent = results.length ? JSON.stringify(results, null, 2) : 'Nenhum jogo encontrado neste período.';
+    output.textContent = results.length ? playground.basicFormat(results).join('\n') : 'Nenhum jogo encontrado neste período.';
   });
 }
 
@@ -184,7 +184,7 @@ function showListByPriceForm() {
     const maxPrice = parseFloat(document.getElementById('maxPrice').value);
     const results = playground.listByPrice(minPrice, maxPrice, games); // Chama a função da lib
     forms.innerHTML = ''; // Limpa o formulário
-    output.textContent = results.length ? JSON.stringify(results, null, 2) : 'Nenhum jogo encontrado nesta faixa de preço.';
+    output.textContent = results.length ? playground.basicFormat(results).join('\n') : 'Nenhum jogo encontrado nesta faixa de preço.';
   });
 }
 
@@ -212,24 +212,7 @@ function showListByTagForm() {
     }
     const results = playground.listTagParriedGames(proximity, game, games); // Chama a função da lib
     forms.innerHTML = ''; // Limpa o formulário
-    output.textContent = results.length ? JSON.stringify(results, null, 2) : 'Nenhum jogo encontrado com esta paridade de tag.';
-  });
-}
-
-//---------formulario de listar jogos----------
-function showListAllForm() {
-  forms.innerHTML = `
-    <h3>Listar todos os jogos</h3>
-    <form id="listAllForm">
-      <button type="submit">Listar</button>
-    </form>
-  `;
-  // Quando o formulário é enviado
-  document.getElementById('listAllForm').addEventListener('submit', e => {
-    e.preventDefault(); // Evita recarregar a página
-    const results = playground.basicFormat(games); // Chama a função de formatação básica
-    forms.innerHTML = ''; // Limpa o formulário
-    output.textContent = results.length ? results.join('\n') : 'Nenhum jogo cadastrado.';
+    output.textContent = results.length ? playground.basicFormat(results).join('\n') : 'Nenhum jogo encontrado com esta paridade de tag.';
   });
 }
 
@@ -242,7 +225,7 @@ const action = {
     output.textContent = 'Banco de dados reiniciado!';
     forms.innerHTML = ''; // Limpa o formulário
   },
-  list : () => showListAllForm(),
+  list : () => { forms.innerHTML = ''; output.textContent = playground.basicFormat(games).join('\n'); },
   add : () => showAddForm(),
   update : () => showUpdateForm(),
   delete : () => showDeleteForm(),
