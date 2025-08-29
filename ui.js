@@ -215,6 +215,27 @@ function showListByTagForm() {
     output.textContent = results.length ? playground.basicFormat(results).join('\n') : 'Nenhum jogo encontrado com esta paridade de tag.';
   });
 }
+//=====Busca de metadados de Jogos na API=====
+const fetchGameInfo = async (gameName) => {
+  try {
+    const treatedName = gameName.toLowerCase().split(" ").join('-');
+    const API_KEY = '5de4e0ded38e4a709c39d47f89b869de';
+
+    const response = await fetch(`https://api.rawg.io/api/games/${encodeURIComponent(treatedName)}?key=${API_KEY}`);
+    
+    if (!response.ok) {
+      throw new Error(`Erro na resposta da API: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (data && data.name) {
+      return data;
+    }
+  } catch (error) {
+    return null;
+  }
+};
 
 //========actions==========
 // Dicionário que associa cada ação a uma função
@@ -222,10 +243,37 @@ const action = {
   init : () => {
     games = playground.resetGames();
     playground.saveGames(games);
-    output.textContent = 'Banco de dados reiniciado!';
+    output.textContent = 'Banco de dados iniciado!';
     forms.innerHTML = ''; // Limpa o formulário
   },
-  list : () => { forms.innerHTML = ''; output.textContent = playground.basicFormat(games).join('\n'); },
+  list : () => { forms.innerHTML = ''; output.innerHTML = games.map(game => `
+    <div style="display: inline-flex; align-items: center; gap: 8px; margin: 2px 0;">
+      ${playground.basicFormat([game])[0]}
+      <button class="view-btn" data-title="${game.nome}">👁️</button>
+    </div>
+    `).join('');
+  // Adiciona evento aos botões 👁️
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      const title = e.target.dataset.title;
+      const info = await fetchGameInfo(title);
+      if (info) {
+        output.innerHTML = `
+          <h3>${info.name}</h3>
+          <b>Avaliado em:</b> ${info.rating}/${info.rating_top}<br>
+          <b>Ano de Lançamento:</b> ${info.released}<br>
+          <b>Desenvolvido por:</b> ${info.developers[0].name}<br>
+          <b>Tempo de jogo:</b> ${info.playtime} horas<br>
+          ${info.background_image ? `<img src="${info.background_image}" alt="Imagem de Fundo" width="701" height="394">` : "Sem Imagem de Fundo disponível"}
+
+        `;
+      } else {
+        output.innerHTML = `<p>Nenhuma informação encontrada para "${title}"</p>
+                            <button onclick="actions.list()">⬅️ Voltar</button>`;
+      }
+    });
+  });
+},
   add : () => showAddForm(),
   update : () => showUpdateForm(),
   delete : () => showDeleteForm(),

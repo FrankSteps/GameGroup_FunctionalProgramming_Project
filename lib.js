@@ -1,3 +1,5 @@
+//========LocalStorage==========
+
 // Chave usada para armazenar os jogos no localStorage
 const STORAGE_KEY = "playground::games"
 
@@ -77,6 +79,8 @@ const games = [
   console.log("Jogos iniciais salvos.")
   return games
 }
+
+//========Listagem e Formatação==========
 
 // Formata a lista de jogos para exibição básica
 const basicFormat = (games) => {
@@ -179,4 +183,4 @@ export const playground = {
     updateGame,
     listGames,
     priceMod,
- }
+}
