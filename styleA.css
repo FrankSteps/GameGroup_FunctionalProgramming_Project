@@ -24,7 +24,7 @@ a {
 
 }
 
-a:hover {
+button:hover {
 
     color:rgb(240, 253, 255);
 
@@ -41,11 +41,4 @@ button {
     cursor: pointer; 
     font-size: 11px; 
     transition: background 0.3s ease;
-}
-
-#buttons {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin: 20px 0;
 }

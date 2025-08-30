@@ -8,17 +8,22 @@
 </head>
 <body>
     <h1>Fórum dos Jogos 🎮</h1> <!-- Corrigido: tag de abertura <h1> -->
-
+    <div>
+        <a href="menu.html">
+            <button>Menu</button>
+        </a>
+        <a href="admin.html">
+            <button>Edição</button>
+        </a>
+    </div>
     <!-- Área de botões para o menu principal -->
     <div id="buttons">
         <!-- Cada botão tem um atributo "data-action" para indicar a ação que será executada -->
-        <button data-action="init">0 - Iniciar Jogos</button> <!-- NOVO -->
-        <button data-action="list">1 - Listar jogos</button>
-        <button data-action="listByDeveloper">2 - Filtrar por desenvolvedora</button>
-        <button data-action="listByYear">3 - Filtrar por período de lançamento</button>
-        <button data-action="listByPrice">4 - Filtrar por faixa de preço</button>
-        <button data-action="listByTag">5 - Filtrar por tag</button>
-        <button data-action="exit">6 - Sair</button>
+        <button data-action="list">0 - Listar jogos</button>
+        <button data-action="listByDeveloper">1 - Filtrar por desenvolvedora</button>
+        <button data-action="listByYear">2 - Filtrar por período de lançamento</button>
+        <button data-action="listByPrice">3 - Filtrar por faixa de preço</button>
+        <button data-action="listByTag">4 - Filtrar por tag</button>
     </div>
 
     <!-- Aqui será exibido dinamicamente o formulário de cada ação (por exemplo, adicionar jogo) -->
