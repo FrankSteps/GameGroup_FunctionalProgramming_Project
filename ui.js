@@ -245,9 +245,8 @@ const action = {
     playground.saveGames(games);
   },
   list : () => { forms.innerHTML = ''; output.innerHTML = games.map(game => `
-    <div style="display: inline-flex; align-items: center; gap: 8px; margin: 2px 0;">
-      ${playground.basicFormat([game])[0]}
-      <button class="view-btn" data-title="${game.nome}">👁️</button>
+    <div style="display: inline-flex; align-items: center; gap: 8px; margin: 2px 0;">   
+      <button class="view-btn" data-title="${game.nome}">${playground.basicFormat([game])[0]}</button>
     </div>
     `).join('');
   // Adiciona evento aos botões 👁️
@@ -258,16 +257,17 @@ const action = {
       if (info) {
         output.innerHTML = `
           <h3>${info.name}</h3>
-          <b>Avaliado em:</b> ${info.rating}/${info.rating_top}<br>
+          <b>Avaliado em:</b> ${info.rating}/5<br>
           <b>Ano de Lançamento:</b> ${info.released}<br>
           <b>Desenvolvido por:</b> ${info.developers[0].name}<br>
           <b>Tempo de jogo:</b> ${info.playtime} horas<br>
           ${info.background_image ? `<img src="${info.background_image}" alt="Imagem de Fundo" width="701" height="394">` : "Sem Imagem de Fundo disponível"}
 
+
+
         `;
       } else {
-        output.innerHTML = `<p>Nenhuma informação encontrada para "${title}"</p>
-                            <button onclick="actions.list()">⬅️ Voltar</button>`;
+        output.innerHTML = `<p>Nenhuma informação encontrada para "${title}"</p>`;
       }
     });
   });
