@@ -243,8 +243,6 @@ const action = {
   init : () => {
     games = playground.resetGames();
     playground.saveGames(games);
-    output.textContent = 'Banco de dados iniciado!';
-    forms.innerHTML = ''; // Limpa o formulário
   },
   list : () => { forms.innerHTML = ''; output.innerHTML = games.map(game => `
     <div style="display: inline-flex; align-items: center; gap: 8px; margin: 2px 0;">

@@ -24,7 +24,32 @@ a {
 
 }
 
+h1{
+    color: rgb(0, 133, 153);
+    text-decoration: none;
+
+}
+
 a:hover {
+
+    color:rgb(240, 253, 255);
+
+}
+
+button { 
+    font-family: 'Press Start 2P', Arial, sans-serif; /* Aplica a fonte pixel nos botões */
+    margin: 5px; 
+    padding: 12px 16px; 
+    background-color: transparent; 
+    color: grey; 
+    border-color:#19adb3;
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-size: 11px; 
+    transition: background 0.3s ease;
+}
+
+button:hover {
 
     color:rgb(240, 253, 255);
 
