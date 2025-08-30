@@ -1,0 +1,31 @@
+/* Importa a fonte pixel do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Estilo básico da página */
+body { 
+    font-family: 'Press Start 2P', Arial, sans-serif; /* Mantém Arial para o texto geral */
+    margin: 20px; 
+    background: linear-gradient(135deg, #000000, rgb(0, 15, 17));
+    color: #333;
+}
+
+.menu {
+    color: grey;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+a {
+    color: grey;
+    text-decoration: none;
+
+}
+
+a:hover {
+
+    color:rgb(240, 253, 255);
+
+}
