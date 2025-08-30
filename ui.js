@@ -280,10 +280,8 @@ const action = {
   listByPrice : () => showListByPriceForm(),
   listByTag : () => showListByTagForm(),
   exit : () => {
-    output.textContent = 'Sessão encerrada. Atualize a página para reiniciar.';
-    forms.innerHTML = ''; // Limpa o formulário
-    buttons.innerHTML = ''; // Remove os botões
-  }
+    buttons.innerHTML = ''; 
+}
 }
 
 //========event listeners==========
