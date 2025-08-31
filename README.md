@@ -14,6 +14,6 @@
 
 <p>
   Este trabalho tem como principal objetivo desenvolver um algoritmo funcional em <strong>JavaScript</strong> 
-  para exibir informações de jogos lançados no período de <strong>2010 a 2025</strong>. Todas as funcionalidades 
+  para criar,ler,atualizar e deletar informações sobre jogos. Todas as funcionalidades 
   foram implementadas em forma de funções, seguindo os princípios de programação funcional.
 </p>
