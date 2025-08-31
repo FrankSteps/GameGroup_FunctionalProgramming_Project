@@ -249,7 +249,7 @@ const action = {
       <button class="view-btn" data-title="${game.nome}">${playground.basicFormat([game])[0]}</button>
     </div>
     `).join('');
-  // Adiciona evento aos botões 👁️
+  // Adiciona evento aos jogos(botões)
   document.querySelectorAll('.view-btn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       const title = e.target.dataset.title;
@@ -280,7 +280,7 @@ const action = {
   listByPrice : () => showListByPriceForm(),
   listByTag : () => showListByTagForm(),
   exit : () => {
-    buttons.innerHTML = ''; 
+    buttons.innerHTML = '<h3 class="fim">Obrigado pela visita!</h3><h4 class="fim">(Sessão Finalizada)</h4>'; 
 }
 }
 
