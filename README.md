@@ -1,4 +1,4 @@
-<h1>Projeto de Programação Funcional com JavaScript – UFS 2025</h1> <h3>Vídeo apresentação:</h3> 
+<h1>Projeto de Programação Funcional: CRUD de JOGOS – UFS 2025</h1> <h3>Vídeo apresentação:</h3> 
 <p>*Por o link vídeo*
   
 </p> <h3>Instruções:</h3> 
