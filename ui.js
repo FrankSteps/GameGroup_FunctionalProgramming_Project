@@ -49,7 +49,7 @@ function showAddForm() {
         document.getElementById('addTag3').value
       ]
     };
-    //comentar aqui()
+    // Adiciona novo jogo ao localStorage
     games = playground.addGame(
       newGame.id,
       newGame.nome,
@@ -233,18 +233,18 @@ function showListByTagForm() {
 //=====Busca de metadados de Jogos na API=====
 const fetchGameInfo = async (gameName) => {
   try {
-    const treatedName = gameName.toLowerCase().split(" ").join('-');
+    const treatedName = gameName.toLowerCase().split(" ").join('-'); // Formata o nome para pesquisa
     const API_KEY = '5de4e0ded38e4a709c39d47f89b869de';
 
-    const response = await fetch(`https://api.rawg.io/api/games/${encodeURIComponent(treatedName)}?key=${API_KEY}`);
+    const response = await fetch(`https://api.rawg.io/api/games/${encodeURIComponent(treatedName)}?key=${API_KEY}`); // Recolhe os dados sobre o jogo na API
     
     if (!response.ok) {
-      throw new Error(`Erro na resposta da API: ${response.status}`);
+      throw new Error(`Erro na resposta da API: ${response.status}`); // Erro caso não receba respostas da API
     }
 
-    const data = await response.json();
+    const data = await response.json(); // Converte os dados num registro para serem usados
 
-    if (data && data.name) {
+    if (data && data.name) { // verifica se temos pelo menos alguma coisa na data e o nome do jogo na data
       return data;
     }
   } catch (error) {
@@ -256,7 +256,7 @@ const fetchGameInfo = async (gameName) => {
 // Dicionário que associa cada ação a uma função
 const action = {
   init : () => {
-    games = playground.resetGames();
+    games = playground.resetGames(); // Carrega lista de jogos base
     playground.saveGames(games);
   },
   list : () => { forms.innerHTML = ''; output.innerHTML = games.map(game => `
@@ -284,7 +284,6 @@ const action = {
     });
   });
 },
-  // Associa cada ação do menu a uma função que exibe o formulário ou executa a ação conveniente
   add : () => showAddForm(),
   update : () => showUpdateForm(),
   delete : () => showDeleteForm(),
