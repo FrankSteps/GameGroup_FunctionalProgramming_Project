@@ -2,7 +2,7 @@
 <p>*Por o link vídeo*
   
 </p> <h3>Instruções:</h3> 
-<p>Para começar, abra o arquivo <strong>“Principal.html”</strong> utilizando um server local.
+<p>Para começar, abra o arquivo <strong>“index.html”</strong> utilizando um server local.
 
 </p> <p>ou
   
