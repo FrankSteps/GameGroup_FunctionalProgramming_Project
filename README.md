@@ -3,9 +3,11 @@
   
 </p> <h3>Instruções:</h3> 
 <p>Para começar, abra o arquivo <strong>“Principal.html”</strong> utilizando um server local.
-    ou
-  Utilize nosso site *Por o link do Site*
 
+</p> <p>ou
+  
+</p> <p>Utilize nosso site *Por o link do Site*
+  
 </p> <h3>Integrantes do grupo:</h3>
 <ul> 
   <li>Francisco Passos</li> 
