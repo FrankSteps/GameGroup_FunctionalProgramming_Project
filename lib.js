@@ -22,7 +22,7 @@ const clearGames = () => {
 // Restaura a lista de jogos inicial e salva no localStorage
 const resetGames = () => {
 const games = [
-    // Lista de jogos pré-definidos
+    // Lista de jogos pré-definidos - id - nome do jogo - preço - nome da desenvolvedora - ano de lançamento - tags do jogo -
     {id: 0, nome: 'Elden Ring', preco: 'R$ 249,90', desenvolvedora: 'FromSoftware', anoDeLancamento: 2022, tags: ['RPG', 'Ação', 'Mundo Aberto']},
     {id: 1, nome: 'The Witcher 3: Wild Hunt', preco: 'R$ 99,90', desenvolvedora: 'CD Projekt Red', anoDeLancamento: 2015, tags: ['RPG', 'Fantasia', 'História']},
     {id: 2, nome: 'God of War', preco: 'R$ 199,90', desenvolvedora: 'Santa Monica Studio', anoDeLancamento: 2018, tags: ['Ação', 'Aventura', 'Mitologia']},

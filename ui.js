@@ -1,8 +1,9 @@
+//importa a bilbioteca "lib.js" para ser trabalhada neste arquivo
 import { playground } from "./lib.js";
 
 //========dados e elementos==========
 
-//carrega os jogos salvos do LS
+//carrega os jogos salvos do JS
 let games = playground.loadGames();
 //salva os jogos do LS
 playground.saveGames(games);
@@ -17,6 +18,7 @@ const buttons = document.getElementById("buttons");
 
 // --- Formulário de adicionar jogo ---
 function showAddForm() {
+  // Preenche a div "forms" com o HTML do formulário de adição de jogo
   forms.innerHTML = `
     <h3>Adicionar jogo</h3>
     <form id="addForm">
@@ -31,6 +33,7 @@ function showAddForm() {
       <button type="submit">Adicionar</button>
     </form>
   `;
+
   // Quando o formulário é enviado
   document.getElementById('addForm').addEventListener('submit', e => {
     e.preventDefault(); // Evita recarregar a página
@@ -46,6 +49,7 @@ function showAddForm() {
         document.getElementById('addTag3').value
       ]
     };
+    //comentar aqui()
     games = playground.addGame(
       newGame.id,
       newGame.nome,
@@ -62,6 +66,7 @@ function showAddForm() {
 }
 
 //---------formulario de atualizar jogo----------
+// bloco responsável para preencher a div "forms" com o formulário para atualizar um jogo existente
 function showUpdateForm() {
   forms.innerHTML = `
     <h3>Atualizar jogo</h3>
@@ -92,6 +97,7 @@ function showUpdateForm() {
         document.getElementById('updateTag3').value
       ]
     };
+    // Atualiza as informações do jogo, salva no localStorage, limpa o formulário e mostra mensagem de confirmação
     games = playground.updateGame(
       updatedGame.id,
       updatedGame.nome,
@@ -262,9 +268,6 @@ const action = {
           <b>Desenvolvido por:</b> ${info.developers[0].name}<br>
           <b>Tempo de jogo:</b> ${info.playtime} horas<br>
           ${info.background_image ? `<img src="${info.background_image}" alt="Imagem de Fundo" width="701" height="394">` : "Sem Imagem de Fundo disponível"}
-
-
-
         `;
       } else {
         output.innerHTML = `<p>Nenhuma informação encontrada para "${title}"</p>`;
@@ -272,6 +275,7 @@ const action = {
     });
   });
 },
+  // Associa cada ação do menu a uma função que exibe o formulário ou executa a ação conveniente
   add : () => showAddForm(),
   update : () => showUpdateForm(),
   delete : () => showDeleteForm(),
@@ -281,7 +285,7 @@ const action = {
   listByTag : () => showListByTagForm(),
   exit : () => {
     buttons.innerHTML = '<h3 class="fim">Obrigado pela visita!</h3><h4 class="fim">(Sessão Finalizada)</h4>'; 
-}
+  }
 }
 
 //========event listeners==========
