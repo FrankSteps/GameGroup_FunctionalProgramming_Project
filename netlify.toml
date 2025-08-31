@@ -1,7 +1,0 @@
-[build]
-  publish = "."
-
-[[redirects]]
-  from = "/"
-  to = "/principa.html"
-  status = 200
