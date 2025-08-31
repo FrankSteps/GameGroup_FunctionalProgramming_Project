@@ -6,7 +6,7 @@
 
 </p> <p>ou
   
-</p> <p>Utilize nosso site *Por o link do Site*
+</p> <p>Utilize nosso site (https://pfgamehub.netlify.app/)
   
 </p> <h3>Integrantes do grupo:</h3>
 <ul> 
