@@ -199,26 +199,35 @@ function showListByTagForm() {
   forms.innerHTML = `
     <h3>Listar jogos por paridade de tag</h3>
     <form id="listByTagForm">
-      <input type="text" id="tag" placeholder="Tag" required />
-      <input type="number" id="proximity" placeholder="Proximidade (mínimo de tags iguais)" value="1" min="1" max="3" required />
-      <input type="number" id="gameId" placeholder="ID do jogo base" required />
+      <input type="text" id="tag1" placeholder="Tag1" required />
+      <input type="text" id="tag2" placeholder="Tag2" />
+      <input type="text" id="tag3" placeholder="Tag3" />
       <button type="submit">Listar</button>
     </form>
   `;
   // Quando o formulário é enviado
   document.getElementById('listByTagForm').addEventListener('submit', e => {
     e.preventDefault(); // Evita recarregar a página
-    const proximity = Number(document.getElementById('proximity').value);
-    const gameId = Number(document.getElementById('gameId').value);
-    const game = games.find(g => g.id === gameId);
-    if (!game) {
-      output.textContent = 'Jogo base não encontrado.';
+    const tag1 = document.getElementById('tag1').value;
+    const tag2 = document.getElementById('tag2').value;
+    const tag3 = document.getElementById('tag3').value;
+
+    if (Boolean(tag2) && Boolean(tag3)) {
+      const results = playground.listTagParriedGames(3, {tags:[tag1,tag2,tag3]}, games);
       forms.innerHTML = '';
-      return;
+      output.textContent = results.length ? playground.basicFormat(results).join('\n') : 'Nenhum jogo encontrado com esta paridade de tag.';
     }
-    const results = playground.listTagParriedGames(proximity, game, games); // Chama a função da lib
-    forms.innerHTML = ''; // Limpa o formulário
-    output.textContent = results.length ? playground.basicFormat(results).join('\n') : 'Nenhum jogo encontrado com esta paridade de tag.';
+    else if (Boolean(tag2)) {
+      const results = playground.listTagParriedGames(2, {tags:[tag1,tag2]}, games);
+      forms.innerHTML = '';
+      output.textContent = results.length ? playground.basicFormat(results).join('\n') : 'Nenhum jogo encontrado com esta paridade de tag.';
+    }
+    else {
+      const results = playground.listTagParriedGames(1, {tags:[tag1]}, games);
+      forms.innerHTML = '';
+      output.textContent = results.length ? playground.basicFormat(results).join('\n') : 'Nenhum jogo encontrado com esta paridade de tag.';
+    }
+
   });
 }
 //=====Busca de metadados de Jogos na API=====
