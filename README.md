@@ -1,6 +1,6 @@
 <h1>Projeto de Programação Funcional: CRUD de JOGOS – UFS 2025</h1> 
 
-### Vídeo apresentação
+### Vídeo de apresentação:
 [![Assista no YouTube](https://img.youtube.com/vi/3nU9iJ-Jtxs/0.jpg)](https://youtu.be/3nU9iJ-Jtxs)
 
 
