@@ -24,13 +24,8 @@
 int main(int argc, char* argv[]){
     httplib::Server server;
 
-    //Responsável por acessar o index e retornar o conteúdo para o navegador :: Minha primeira vez usando função lambda com C++
-    server.Get("/", [](const httplib::Request&, httplib::Response& res){
-        std::ifstream file("index.html");
-        std::stringstream buffer;
-        buffer << file.rdbuf();
-        res.set_content(buffer.str(), "text/html");
-    });
+    // Monta a pasta "server-test" como raiz dos arquivos estáticos
+    server.set_mount_point("/", "./Server-Test");
 
     //mensagem mostrando que está tudo ok
     std::cout << "Tudo correto por aqui!\n";

@@ -31,7 +31,13 @@
 <p>
   Neste repositório estão alguns arquivos que fazem parte de um servidor que estou desenvolvendo por motivos de estudos e aprofundamento na linguagem C++.
   Quando o mesmo estiver disponível, eu irei atualizar este readme confirmando o feito.
+</p>
 
+<p>
+  A pasta "server-test" pode ser ignorada. Como o próprio nome já sugere, ela foi criada apenas para testar o servidor.
+</p>
+
+<p>
   ass: Francisco Passos (ou apenas "Frank", como queira 😃)
 </p>
 
