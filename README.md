@@ -41,3 +41,14 @@
   ass: Francisco Passos (ou apenas "Frank", como queira 😃)
 </p>
 
+
+<h3>Servidor está disponível para os primeiros testes!</h3>
+
+<p>
+  g++ server.cpp -o server
+</p>
+
+<p>
+  ./server
+</p>
+
