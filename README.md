@@ -1,13 +1,8 @@
 <h1>Projeto de Programação Funcional: CRUD de JOGOS – UFS 2025</h1> 
 
-<h3>Vídeo apresentação:</h3>
-<iframe width="560" height="315" 
-        src="https://www.youtube.com/embed/3nU9iJ-Jtxs" 
-        title="Vídeo de apresentação" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-</iframe>
+### Vídeo apresentação
+[![Assista no YouTube](https://img.youtube.com/vi/3nU9iJ-Jtxs/0.jpg)](https://youtu.be/3nU9iJ-Jtxs)
+
 
 <h3>Instruções:</h3> 
 <p>Para começar, abra o arquivo <strong>“index.html”</strong> utilizando um server local.
