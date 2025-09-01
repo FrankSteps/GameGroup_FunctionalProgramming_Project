@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Define o charset para UTF-8, permitindo o uso de acentos, caracteres especiais e emojis -->
+    <meta charset="UTF-8">
+
+    <!-- Permite que a página se ajuste ao tamanho da tela do dispositivo (responsivo) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Define o título da aba do navegador -->
+    <title>Admin</title>
+
+    <!-- Importa o arquivo de estilos CSS específico desta página -->
+    <link rel="stylesheet" href="styleA.css">
+</head>
+<body>
+    <!-- Div contendo os botões principais de navegação -->
+    <div>
+        <!-- Link para a página principal do menu -->
+        <a href="index.html">
+            <button>Principal</button>
+        </a>
+
+        <!-- Link para a página de busca de jogos -->
+        <a href="read.html">
+            <button>Buscar</button>
+        </a>
+    </div>
+
+    <!-- Título da seção de administração/edição -->
+    <h1>Edição</h1>
+
+    <!-- Div que contém os botões de ação conectados ao JavaScript -->
+    <div id="buttons">
+        <!-- Botão que exibe o formulário para adicionar um jogo -->
+        <button data-action="add">Adicionar jogo</button>
+
+        <!-- Botão que exibe o formulário para remover um jogo -->
+        <button data-action="delete">Remover jogo</button>
+
+        <!-- Botão que exibe o formulário para atualizar um jogo existente -->
+        <button data-action="update">Atualizar jogo</button>
+    </div>
+
+    <!-- Div onde os formulários (add, delete, update) serão dinamicamente inseridos pelo JS -->
+    <div id="forms"></div>
+
+    <!-- Div onde as mensagens ou resultados (como lista de jogos) serão exibidos pelo JS -->
+    <div id="output"></div>
+
+    <!-- Importa o arquivo JavaScript como módulo, que vai controlar a interação com os botões -->
+    <script type="module" src="ui.js"></script>
+</body>
+</html>

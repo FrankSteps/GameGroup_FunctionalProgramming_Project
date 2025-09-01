@@ -6,6 +6,13 @@
 
     A ideia é criar um servidor local que hospeda o site utilizando C++ e suas respectivas bibliotecas.
     última modificação: 01/05/2025
+
+    [] Ainda não testado - Tenho outros projetos para finalizar por agora
+    [] O servidor é local -> "http://localhost:8080" -> Por enquanto...
+
+    ---------------------------------COMPILAÇÃO---------------------------------
+    [] g++ server.cpp -o server
+    [] ./server
 */
 
 #include <iostream>
