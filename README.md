@@ -28,6 +28,8 @@
   foram implementadas em forma de funções, seguindo os princípios de programação funcional.
 </p>
 
+<h3>Avisos importantes sobre o projeto - Francisco</h3>
+
 <p>
   Neste repositório estão alguns arquivos que fazem parte de um servidor que estou desenvolvendo por motivos de estudos e aprofundamento na linguagem C++.
   Quando o mesmo estiver disponível, eu irei atualizar este readme confirmando o feito.
